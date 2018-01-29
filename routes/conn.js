@@ -18,7 +18,7 @@ var postheaders = {
 		'rejectUnauthorized': false
 };
 
-// Json that contains all the options of the connection
+// Json that contains all the options to run the scanner
 let options = {
 	hostname: '3.8.86.49',
 	port: '8834',
