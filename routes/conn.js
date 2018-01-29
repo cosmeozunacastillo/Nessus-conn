@@ -7,7 +7,7 @@ a = {};
 
 // Request's body
 jsonObject = JSON.stringify({
-    username: 'Cosme',
+    username: 'Automation',
     password: '12345678'
 });
 
