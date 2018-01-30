@@ -6,26 +6,26 @@ var connection = require('../Files/conn2');
 
 router.get('/', function(req, res, next) {
   //OBTAIN token
-  con = '';
+  token_con = ''; // WHERE THE TOKEN WILL BE STORED
   console.log('Entra');
   for (var i = 10; i < a.length-2; i++) {
-    con += a[i];
+    token_con += a[i];
   }
 
   //POST DATA
   console.log('\n Token' + a.token);
-  jsonObject2 = JSON.stringify({
+  let jsonObject2 = JSON.stringify({
       uuid: 'ab4bacd2-05f6-425c-9d79-3ba3940ad1c24e51e1f403febe40',
-      settings: {"emails":"","filter_type":"and","filters":[],"launch_now":true,"enabled":false,"file_targets":"","text_targets":"3.211.65.171","policy_id":"6749","scanner_id":"1","folder_id":13628,"description":"test2","name":"test2"}
+      settings: {"emails":"","filter_type":"and","filters":[],"launch_now":true,"enabled":false,"file_targets":"","text_targets":"3.211.65.171","policy_id":"6749","scanner_id":"1","folder_id":2,"description":"test23","name":"test2"}
     });
-    console.log('x-cookie: ' +con);
+    console.log('x-cookie: ' +token_con);
 
   //CREATE SCAN HEADERS
   let postheaders = {
       'Content-Type' : 'application/json',
       'Content-Length' : Buffer.byteLength(jsonObject2, 'utf8'),
   		'rejectUnauthorized': false,
-      'x-Cookie':  'token='+con
+      'x-Cookie':  'token='+token_con
   };
 
   //CREATE OPTIONS TO CONNECT IN ORDER TO RUN A SCAN
@@ -40,27 +40,13 @@ router.get('/', function(req, res, next) {
   }
 
   connection.post('https://3.8.86.49:8834/scans',jsonObject2,options).then(result => {
-  	console.log('Ya lo final');
-  	console.log('\n Respuesta final: '+result.response)
-  	console.log('\n Body final: '+result.body)
-  	a = result.body;
-    //console.log(a.token);
-  	console.log('\n \n Si se pudo! '+a);
+  	console.log('\n Body cuando pone a correr el scanner : '+result.body);
+    console.log('\n Tamaño del JSON Body : '+result.body.length);
   }).catch(function(err){
     console.log(err);
   });
 
-  res.send('Aqui esta solo el token: ' + con);
+  res.send('Aqui esta solo el token: ' + token_con);
 });
-/*
-var postheaders = {
-    'Content-Type' : 'application/json',
-    'Content-Length' : Buffer.byteLength(jsonObject, 'utf8'),
-		'rejectUnauthorized': false,
-    'X-Cookie:':  con
-};
 
-console.log('token ya para usarse: ' + con);
-
-*/
 module.exports = router;
