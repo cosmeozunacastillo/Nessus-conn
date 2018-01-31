@@ -6,7 +6,7 @@ var connection = require('../Files/conn2');
 
 router.get('/', function(req, res, next) {
   //"authentication" file needs to be called first to make this file works
-  
+  //test
   //POST DATA
   console.log('\n Token' + a.token);
   let jsonObject2 = JSON.stringify({
