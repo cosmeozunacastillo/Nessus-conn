@@ -68,8 +68,8 @@ function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED
 	} else {
     //console.log('viendo como queda la url despues del ELSE: '+ options.host + ' ' + options.port +' ' + options.path);
 		let parsed_url = url.parse(options.url)
-
-		options.host = parsed_url.host
+		console.log('Esta es la URL:' + options.url+ '\n Y esta es la URL parseada: '+ parsed_url.host + parsed_url.path + '\n');
+		//options.host = parsed_url.host
 		options.path = parsed_url.path
     //options.port = 8834;
     //options.strictSSL = false;
