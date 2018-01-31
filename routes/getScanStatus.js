@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
         //'Content-Type' : 'application/json',
         //'Content-Length' : Buffer.byteLength(jsonObject2, 'utf8'),
         'rejectUnauthorized': false,
-        'x-Cookie':  'token='+con,
+        'x-Cookie':  'token='+ a,
         //'Host': '3.8.86.49:8834'
     };
   //CREATE OPTIONS TO REQUEST STATUS

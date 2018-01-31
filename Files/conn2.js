@@ -36,7 +36,6 @@ const desktop_agents = [
 
 function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED = 0) {
 	const lib = options.url.startsWith('https') ? https : http
-  //console.log('ENTRA AL DOREQUEST');
 	if ('headers' in options == false) {
 		options.headers = {}
 	}
@@ -46,7 +45,6 @@ function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED
 	}
 
 	if (data) {
-    console.log('QUE TRAE EL DOREQUEST -> DATA if ' + data + ' METHOD: '+ options.method );
 		options.method  = 'POST'
 
 		if (typeof data != 'string') {
@@ -64,17 +62,14 @@ function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED
 		options.host = proxy.host
 		options.port = proxy.port
 		options.path = options.url
-    //console.log('viendo como queda la url: '+ options.host + ' ' + options.port +' ' + options.path);
 	} else {
-    //console.log('viendo como queda la url despues del ELSE: '+ options.host + ' ' + options.port +' ' + options.path);
+
 		let parsed_url = url.parse(options.url)
-		console.log('Esta es la URL:' + options.url+ '\n Y esta es la URL parseada: '+ parsed_url.host + parsed_url.path + '\n');
 		//options.host = parsed_url.host
 		options.path = parsed_url.path
     //options.port = 8834;
     //options.strictSSL = false;
     options.rejectUnauthorized = false;
-    console.log('viendo como queda la url despues del ELSE 2 --- '+ options.host + ' ' + options.port +' ' + options.path + ' '+ options.rejectUnauthorized);
 	}
 
 	if (REQUEST_TIMEOUT) {
@@ -94,12 +89,9 @@ function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED
 
 				if (url.parse(redirect).hostname == false) {
 					let parsed_url = url.parse(options.url)
-          //console.log('Como entra la url'+option.url)
 
 					redirect = url.resolve(parsed_url.host, response.headers.location)
-          //console.log('como sale' + parsed_url.host + ' '+ response.headers.location);
 				}
-        //console.log('promise seguimiento 1'+ options.url);
 				options.url = redirect
 
 				REDIRECTS_FOLLOWED++
@@ -117,11 +109,9 @@ function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED
 				})
 			} else {
 				let body = [];
-        //console.log('este es el PROMISE -> DEST '+ dest);
 				if (dest) {
 					response.pipe(dest)
 				} else {
-          console.log('Viendo como es el response : '  + response.statusCode + ' '+ response.statusMessage);
 					response.on('data', function(chunk) {
 						body.push(chunk)
 					});
@@ -197,7 +187,6 @@ function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED
 }
 
 function parseOptions(options, url = false) {
-  //console.log('Parseoption 1er log '+Object.prototype.toString.call(options));
 	if (Object.prototype.toString.call(options) != '[object Object]') {
 		options = {}
 	}
@@ -213,7 +202,6 @@ function parseOptions(options, url = false) {
 			let {'0': host, '1': port} = options.proxy.split(':')
 
 			options.proxy = {host, port}
-      //console.log('Entra al if del proxy en el parseOptions'+ options.proxy);
 		}
 	} else {
 		if (PROXY_LIST && PROXY_LIST.length > 0) {
@@ -267,7 +255,6 @@ function parseOptions(options, url = false) {
 
 	if (url) {
 		options.url = url
-    //console.log('If de la url '+ options.url);
 	}
 
 	return options
@@ -281,9 +268,7 @@ module.exports.get = function(url, options = {}) {
 
 module.exports.post = function(url, data, options = {}) {
 	var options = JSON.parse(JSON.stringify(options));
-  console.log('como esta el json de options: ' + options + ' URL:  '+url);
 		options = parseOptions(options, url)
-    console.log('como sale el json de options: ' + options + ' URL: '+url);
 	return doRequest(options, data)
 }
 

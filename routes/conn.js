@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var test = require('../Files/conn2');
 // 'a' is the variable that will store the token
-a = {};
+a = '';
 
 // Request's body
 jsonObject = JSON.stringify({
@@ -31,11 +31,10 @@ let options = {
 
 //THE POST Request is called!!
 test.post('https://3.8.86.49:8834/session',jsonObject,options).then(result => {
-	console.log('Ya lo final');
-	console.log('\n Respuesta final: '+result.response)
 	console.log('\n Body final: '+result.body)
-	a = result.body;
-	console.log('\n \n Si se pudo! '+a);
+	a = JSON.parse(result.body).token;
+  console.log(JSON.parse(result.body).token);
+	console.log('\n \n Si se pudo! '+ a);
 }).catch(function(err){
   console.log(err);
 });

@@ -11,7 +11,6 @@ var conn = require('./routes/conn');
 var test = require('./routes/testing');
 var Launch = require('./routes/Launch_scan');
 var status = require('./routes/getScanStatus');
-var authentication = require('./routes/authentication');
 
 var app = express();
 
@@ -33,7 +32,6 @@ app.use('/conn', conn);
 app.use('/testing', test);
 app.use('/Launch_scan',Launch);
 app.use('/getScanStatus',status);
-app.use('/authentication',authentication);
 
 
 // catch 404 and forward to error handler
