@@ -11,7 +11,10 @@ var conn = require('./routes/conn');
 var test = require('./routes/testing');
 var Launch = require('./routes/Launch_scan');
 var status = require('./routes/getScanStatus');
+<<<<<<< HEAD
 var Get_Info = require('./routes/Get_Assessment_Infor');
+=======
+>>>>>>> a0193c9683ad5d59c60f1ac6bd9bca168da40429
 
 var app = express();
 
@@ -33,7 +36,10 @@ app.use('/conn', conn);
 app.use('/testing', test);
 app.use('/Launch_scan',Launch);
 app.use('/getScanStatus',status);
+<<<<<<< HEAD
 app.use('/Get_Assessment_Infor',Get_Info);
+=======
+>>>>>>> a0193c9683ad5d59c60f1ac6bd9bca168da40429
 
 
 // catch 404 and forward to error handler
