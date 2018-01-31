@@ -5,13 +5,8 @@ var connection = require('../Files/conn2');
 /* GET users listing. */
 
 router.get('/', function(req, res, next) {
-  //OBTAIN token
-  con = ''; // WHERE THE TOKEN WILL BE STORED
-  console.log('Entra');
-  for (var i = 10; i < a.length-2; i++) {
-    con += a[i];
-  }
-
+  //"authentication" file needs to be called first to make this file works
+  
   //POST DATA
   console.log('\n Token' + a.token);
   let jsonObject2 = JSON.stringify({
