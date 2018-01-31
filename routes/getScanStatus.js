@@ -8,6 +8,9 @@ scannerInfo = {
     "id": null,
     "status":null,
 };
+
+finished = '';
+
 router.get('/', function(req, res, next) {
     //CREATING FOLDER ID
     folder = 13628;
@@ -31,16 +34,36 @@ router.get('/', function(req, res, next) {
     }
     connection.get('https://3.8.86.49:8834/scans?folder_id='+folder,options).then(
         result => {
-          aa = result.body;
+          //aa = result.body;
           //console.log(typeof(JSON.parse(result.body)));
-          console.log(JSON.parse(aa).scans);
-          //res.send('This is the response: ' + aa);
+          aa = JSON.parse(result.body).scans;
+          //console.log(JSON.parse(aa).scans);
+          //console.log(aa);
+          res.send(' Id del scanner corriendo : ' + aa[0].id);
           //res.send(JSON.parse(result.body).scans[0]);
+          console.log('Tamaño del array de aa: ' + aa.length);
+
+          //while(finished == ''){
+          for (var i = 0; i < aa.length; i++) {
+            if (aa[i].id == scannerInfo.id){
+                console.log('Scanner ' + scannerInfo.id + ' Encontrado, ahora se procedera a checar el estatus... ');
+                if (aa[i].status != 'completed' && aa[i].status != 'cancelled' && aa[i].status != 'paused'){
+                  console.log('Scan '+ aa[i].status +' , PLEASE wait.....!!!!!');
+                }else {
+                  console.log('Scan ' + aa[i].status);
+                  finished = 'completed';
+                }
+            }
+          }
+        //}
+
     }).catch(function(err){
     console.log(err);
     });
+
+    /*
     while(scannerInfo.status!="completed"){
-        
+
         connection.get('https://3.8.86.49:8834/scans?folder_id='+folder,options).then(
         result => {
             //console.log("hola");
@@ -52,7 +75,7 @@ router.get('/', function(req, res, next) {
                     //alert(aa[i][key]);
                     console.log("This is the key: "+key+" and this is the value of the key: "+aa[i][key]);
                     if(key=='id' && aa[i][key]==scannerInfo.id){
-                        
+
                         scannerInfo.status = aa[i];
                         break entire_loop;
                     }
@@ -62,8 +85,8 @@ router.get('/', function(req, res, next) {
         }).catch(function(err){
         console.log(err);
         });
-    }
-    console.log("scanner completed!");
+    }*/
+    //console.log("scanner completed!");
     //res.send('This is the response: ' + aa);
 });
 
