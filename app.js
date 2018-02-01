@@ -9,12 +9,16 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var conn = require('./routes/conn');
 var test = require('./routes/testing');
-var Launch = require('./routes/Launch_scan');
+var Launch = require('./routes/launchScan');
 var status = require('./routes/getScanStatus');
+<<<<<<< HEAD
 <<<<<<< HEAD
 var Get_Info = require('./routes/Get_Assessment_Infor');
 =======
 >>>>>>> a0193c9683ad5d59c60f1ac6bd9bca168da40429
+=======
+var vulnerabilities = require('./routes/getScanVulnerabilities');
+>>>>>>> e6ccc49118e8b267a2465aa1e3829cd5582bb51b
 
 var app = express();
 
@@ -34,13 +38,17 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/conn', conn);
 app.use('/testing', test);
-app.use('/Launch_scan',Launch);
+app.use('/launchScan',Launch);
 app.use('/getScanStatus',status);
+<<<<<<< HEAD
 <<<<<<< HEAD
 app.use('/Get_Assessment_Infor',Get_Info);
 =======
 >>>>>>> a0193c9683ad5d59c60f1ac6bd9bca168da40429
 
+=======
+app.use('/getScanVulnerabilities',vulnerabilities);
+>>>>>>> e6ccc49118e8b267a2465aa1e3829cd5582bb51b
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
