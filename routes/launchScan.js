@@ -2,11 +2,7 @@ var express = require('express');
 var router = express.Router();
 var connection = require('../Files/conn2');
 
-/* GET users listing. */
-
 router.get('/', function(req, res, next) {
-  //"authentication" file needs to be called first to make this file works
-  //test
   //POST DATA
   console.log('\n Token' + a.token);
   let jsonObject2 = JSON.stringify({
@@ -46,11 +42,6 @@ router.get('/', function(req, res, next) {
   }
 
   connection.post('https://3.8.86.49:8834/scans',jsonObject2,options).then(result => {
-  	console.log('\n Body cuando pone a correr el scanner : '+result.body);
-    console.log('\n Tamaño del JSON Body : '+result.body.length);
-    //Asign id of the scanner launched
-    scannerInfo.id = JSON.parse(result.body).scan.id;
-    console.log("Sending scan, the id is: "+scannerInfo.id);
     res.send(JSON.parse(result.body));
     
   }).catch(function(err){

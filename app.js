@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var conn = require('./routes/conn');
 var test = require('./routes/testing');
-var Launch = require('./routes/Launch_scan');
+var Launch = require('./routes/launchScan');
 var status = require('./routes/getScanStatus');
 
 var app = express();
@@ -30,7 +30,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/conn', conn);
 app.use('/testing', test);
-app.use('/Launch_scan',Launch);
+app.use('/launchScan',Launch);
 app.use('/getScanStatus',status);
 
 
