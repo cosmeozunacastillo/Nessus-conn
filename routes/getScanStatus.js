@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
     connection.get('https://3.8.86.49:8834/scans?folder_id='+folder,options).then(
         result => {
             aa = JSON.parse(result.body).scans;
-            console.log(aa);
+            //console.log(aa);
             var response = {};
             var wasScanFound = false;
             
