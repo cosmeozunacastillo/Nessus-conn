@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
         //'Host': '3.8.86.49:8834'
     };
   //CREATE OPTIONS TO REQUEST STATUS
-    let options = {
+    options = {
         host: '3.8.86.49',
         port: '8834',
         path: '/scans?folder_id='+folder,
@@ -33,9 +33,9 @@ router.get('/', function(req, res, next) {
         result => {
           aa = result.body;
           //console.log(typeof(JSON.parse(result.body)));
-          console.log(JSON.parse(aa).scans);
+          //console.log(JSON.parse(aa).scans);
           //res.send('This is the response: ' + aa);
-          //res.send(JSON.parse(result.body).scans[0]);
+          res.send(JSON.parse(result.body).scans);
     }).catch(function(err){
     console.log(err);
     });
@@ -43,9 +43,9 @@ router.get('/', function(req, res, next) {
         
         connection.get('https://3.8.86.49:8834/scans?folder_id='+folder,options).then(
         result => {
-            //console.log("hola");
+            console.log("hola");
             aa = JSON.parse(result.body).scans;
-            //console.log(aa.length);
+            console.log(aa.length);
             entire_loop:
             for(var i=0; i<aa.length; i++){
                 for(var key in aa[i]){
@@ -58,7 +58,6 @@ router.get('/', function(req, res, next) {
                     }
                 }
             }
-
         }).catch(function(err){
         console.log(err);
         });
