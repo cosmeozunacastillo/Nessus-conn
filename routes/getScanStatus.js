@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var connection = require('../Files/conn2');
 var watch = require('node-watch');
+//var checkingAuth = require('conn');
 aa = {};
 
 router.get('/', function(req, res, next) {
@@ -26,7 +27,7 @@ router.get('/', function(req, res, next) {
         method: 'GET',
         rejectUnauthorized: false,
         headers: postheaders,
-        tryToDecode: true 
+        tryToDecode: true
     }
 
     connection.get('https://3.8.86.49:8834/scans?folder_id='+folder,options).then(
@@ -35,7 +36,7 @@ router.get('/', function(req, res, next) {
             //console.log(aa);
             var response = {};
             var wasScanFound = false;
-            
+
             if(aa != null){
                 if(typeof(scan)=='undefined' || scan==''){
                     res.send(aa);

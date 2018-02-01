@@ -128,7 +128,6 @@ function doRequest (options = {}, data = false, dest = false, REDIRECTS_FOLLOWED
 						statusCode: response.statusCode,
 						statusMessage: response.statusMessage,
 					}
-
 					let encoding = 'content-encoding' in response.headers ? response.headers['content-encoding'] : false;
 
 					if (options.tryToDecode && encoding) {

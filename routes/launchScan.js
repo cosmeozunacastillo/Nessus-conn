@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var connection = require('../Files/conn2');
+//var check = require('./conn');
 
 router.get('/', function(req, res, next) {
   //POST DATA
-  console.log('\n Token' + a.token);
   let jsonObject2 = JSON.stringify({
       uuid: 'ab4bacd2-05f6-425c-9d79-3ba3940ad1c24e51e1f403febe40',
       settings: {"emails":"",
@@ -20,7 +20,6 @@ router.get('/', function(req, res, next) {
                   "description":"test23",
                   "name":"test5"}
     });
-    console.log('x-cookie: ' +a);
 
   //CREATE SCAN HEADERS
   let postheaders = {
@@ -32,7 +31,7 @@ router.get('/', function(req, res, next) {
 
   //CREATE OPTIONS TO CONNECT IN ORDER TO RUN A SCAN
   let options = {
-  	hostname: '3.8.86.49',
+  	host: '3.8.86.49',
   	port: '8834',
   	path: '/scans',
   	method: 'POST',
@@ -41,9 +40,10 @@ router.get('/', function(req, res, next) {
   	tryToDecode: true // Tries to decode gzip
   }
 
+  checkConnection.checkingAuth();
   connection.post('https://3.8.86.49:8834/scans',jsonObject2,options).then(result => {
     res.send(JSON.parse(result.body));
-    
+
   }).catch(function(err){
     console.log(err);
   });
