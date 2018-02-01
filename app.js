@@ -11,6 +11,7 @@ var conn = require('./routes/conn');
 var test = require('./routes/testing');
 var Launch = require('./routes/launchScan');
 var status = require('./routes/getScanStatus');
+var vulnerabilities = require('./routes/getScanVulnerabilities');
 
 var app = express();
 
@@ -32,7 +33,7 @@ app.use('/conn', conn);
 app.use('/testing', test);
 app.use('/launchScan',Launch);
 app.use('/getScanStatus',status);
-
+app.use('/getScanVulnerabilities',vulnerabilities);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
