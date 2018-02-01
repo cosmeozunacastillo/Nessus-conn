@@ -53,7 +53,7 @@ router.get('/', function(req, res, next) {
                         res.send(JSON.parse('{"error":"provided scan was not found."}'));
                 }
             }else{
-                res.send(JSON.parse('{"error":"provided folder was not found."}'));
+                res.send(JSON.parse('{"error":["folder was not found","credentials are not valid","sesion has expired"]}'));
             }
     }).catch(function(err){
     console.log(err);
