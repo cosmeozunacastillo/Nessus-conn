@@ -15,7 +15,7 @@ json_data={
     Mobile_IP: 'N/A'
   };
   //res.json(json_data);
-  
+
   ScannerIP = json_data.Web_IP;
   ScannerName = json_data.Request_Num + ' - ' + json_data.Application_Name;
 
