@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Scan Automation API' });
+  res.render('index', { title: 'Nmap Scan API.' });
 });
 
 module.exports = router;

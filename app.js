@@ -6,12 +6,16 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-var conn = require('./routes/conn');
-var test = require('./routes/testing');
-var Launch = require('./routes/launchScan');
-var status = require('./routes/getScanStatus');
-var vulnerabilities = require('./routes/getScanVulnerabilities');
+
+var nessusIndex = require('./routes/nessus/index');
+var nessusConn = require('./routes/nessus/conn');
+var nessusLaunch = require('./routes/nessus/launchScan');
+var nessusStatus = require('./routes/nessus/getScanStatus');
+var nessusVulnerabilities = require('./routes/nessus/getScanVulnerabilities');
+
+var nmapIndex = require('./routes/nmap/index');
+
+var webInspectIndex = require('./routes/webInspect/index');
 
 var app = express();
 
@@ -28,12 +32,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
-app.use('/conn', conn);
-app.use('/testing', test);
-app.use('/launchScan',Launch);
-app.use('/getScanStatus',status);
-app.use('/getScanVulnerabilities',vulnerabilities);
+
+app.use('/nessus/', nessusIndex);
+app.use('/nessus/conn', nessusLaunch);
+app.use('/nessus/launchScan',nessusLaunch);
+app.use('/nessus/getScanStatus',nessusStatus);
+app.use('/nessus/getScanVulnerabilities',nessusVulnerabilities);
+
+app.use('/nmap/',nmapIndex);
+
+app.use('/webInspect/',webInspectIndex);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
