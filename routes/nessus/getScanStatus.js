@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../Files/conn2');
+var connection = require('../../Files/conn2');
 var watch = require('node-watch');
 aa = {};
 

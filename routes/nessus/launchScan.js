@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../Files/conn2');
+var connection = require('../../Files/conn2');
 
 router.get('/', function(req, res, next) {
   //POST DATA

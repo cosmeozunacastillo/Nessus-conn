@@ -1,7 +1,7 @@
 var https = require('https');
 var express = require('express');
 var router = express.Router();
-var test = require('../Files/conn2');
+var test = require('../../Files/conn2');
 // 'a' is the variable that will store the token
 a = '';
 

@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../Files/conn2');
+var connection = require('../../Files/conn2');
 
 router.get('/', function(req, res, next) {
     var scan = req.query.scan;
     var regex = new RegExp("^[0-9]+$");
-    //console.log(regex.exec(scan));
-    if(regex!=null){
+    console.log(regex.exec(scan));
+    if(regex.exec(scan)!=null){
         let postheaders = {
             'rejectUnauthorized': false,
             'x-Cookie':  'token='+ a,

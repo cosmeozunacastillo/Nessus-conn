@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('Aqui esta el token'+ a + '\n Aqui estan las creds: '+ jsonObject);
+  res.render('index', { title: 'WebInspect Scan API.' });
 });
 
 module.exports = router;
