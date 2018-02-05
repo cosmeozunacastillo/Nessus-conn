@@ -13,6 +13,7 @@ var nessusLaunch = require('./routes/nessus/launchScan');
 var nessusStatus = require('./routes/nessus/getScanStatus');
 var nessusVulnerabilities = require('./routes/nessus/getScanVulnerabilities');
 var nessusGetJson = require('./routes/nessus/getAssessmentInfo');
+var nessusValidateToken = require('./routes/nessus/validateToken');
 
 var nmapIndex = require('./routes/nmap/index');
 var nmapLaunch = require('./routes/nmap/launchScan');
@@ -40,6 +41,7 @@ app.use('/nessus/launchScan',nessusLaunch);
 app.use('/nessus/getScanStatus',nessusStatus);
 app.use('/nessus/getScanVulnerabilities',nessusVulnerabilities);
 app.use('nessus/getAssessmentInfo',nessusGetJson);
+app.use('/nessus/validateToken',nessusValidateToken);
 
 app.use('/nmap/',nmapIndex);
 app.use('/nmap/launchScan',nmapLaunch);

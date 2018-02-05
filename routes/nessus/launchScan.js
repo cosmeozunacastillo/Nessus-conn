@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var connection = require('../../Files/conn2');
-
+isValid = false;
 router.get('/', function(req, res, next) {
   //POST DATA
   console.log('\n Token' + a.token);
@@ -41,12 +41,12 @@ router.get('/', function(req, res, next) {
   	tryToDecode: true // Tries to decode gzip
   }
 
-  connection.post('https://3.8.86.49:8834/scans',jsonObject2,options).then(result => {
-    res.send(JSON.parse(result.body));
-
-  }).catch(function(err){
-    console.log(err);
-  });
-
+  //checkConnection.checkingAuth(isValid);
+    connection.post('https://3.8.86.49:8834/scans',jsonObject2,options).then(result => {
+        res.send(JSON.parse(result.body));
+    }).catch(function(err){
+        console.log(err);
+    });
+    
 });
 module.exports = router;
