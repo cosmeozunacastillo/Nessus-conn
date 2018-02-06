@@ -31,7 +31,7 @@ let options = {
 }
 
 //Creating object with function of authentication, this is Global
-Connection = {
+Validation = {
   authNessus : function(){
     //THE POST Request is called!!
     test.post('https://3.8.86.49:8834/session',jsonObject,options).then(result => {
@@ -47,6 +47,6 @@ Connection = {
 
 //We call the Authentication method every time we start the application
 
-Connection.authNessus();
+Validation.authNessus();
 
 module.exports = router;

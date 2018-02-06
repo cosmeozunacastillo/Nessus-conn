@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
     if (result.body == '{"error":"Invalid Credentials"}' || result.body == '{"error":"You need to log in to perform this request"}') {
       console.log('Something were wrong... Connecting again. ');
       res.send('Invalid Token');
-      return Connection.authNessus();
+      return Validation.authNessus();
     }else{
       console.log('Everything is ok');
       res.send('Valid Token');
