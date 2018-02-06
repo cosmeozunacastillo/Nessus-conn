@@ -7,19 +7,21 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 
+
 var nessusIndex = require('./routes/nessus/index');
 var nessusConn = require('./routes/nessus/conn');
 var nessusLaunch = require('./routes/nessus/launchScan');
 var nessusStatus = require('./routes/nessus/getScanStatus');
 var nessusVulnerabilities = require('./routes/nessus/getScanVulnerabilities');
-var nessusGetJson = require('./routes/nessus/getAssessmentInfo');
+//var nessusGetJson = require('./routes/nessus/getAssessmentInfo');
 var nessusValidateToken = require('./routes/nessus/validateToken');
 
 var nmapIndex = require('./routes/nmap/index');
 var nmapLaunch = require('./routes/nmap/launchScan');
 
-var webInspectIndex = require('./routes/webInspect/index');
 
+var webInspectIndex = require('./routes/webInspect/index');
+var assessmentInfo = require('./routes/setAssessmentInfo');
 var app = express();
 
 // view engine setup
@@ -35,18 +37,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
 app.use('/nessus/', nessusIndex);
 app.use('/nessus/conn', nessusLaunch);
 app.use('/nessus/launchScan',nessusLaunch);
 app.use('/nessus/getScanStatus',nessusStatus);
 app.use('/nessus/getScanVulnerabilities',nessusVulnerabilities);
-app.use('nessus/getAssessmentInfo',nessusGetJson);
+//app.use('nessus/getAssessmentInfo',nessusGetJson);
 app.use('/nessus/validateToken',nessusValidateToken);
 
 app.use('/nmap/',nmapIndex);
 app.use('/nmap/launchScan',nmapLaunch);
 
 app.use('/webInspect/',webInspectIndex);
+app.use('/setAssessmentInfo',assessmentInfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
