@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
       'Content-Type' : 'application/json',
       'Content-Length' : Buffer.byteLength(jsonObject2, 'utf8'),
   		'rejectUnauthorized': false,
-      'x-Cookie':  'token='+a
+      'X-Cookie':  'token='+a
   };
 
   //CREATE OPTIONS TO CONNECT IN ORDER TO RUN A SCAN
@@ -41,12 +41,11 @@ router.get('/', function(req, res, next) {
   	tryToDecode: true // Tries to decode gzip
   }
 
-  //checkConnection.checkingAuth(isValid);
     connection.post('https://3.8.86.49:8834/scans',jsonObject2,options).then(result => {
         res.send(JSON.parse(result.body));
     }).catch(function(err){
         console.log(err);
     });
-    
+
 });
 module.exports = router;

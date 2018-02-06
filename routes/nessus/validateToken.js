@@ -27,16 +27,14 @@ router.get('/', function(req, res, next) {
   console.log('Checking the status of the Token');
   test.get('https://3.8.86.49:8834/session',optionsCheck).then(result => {
     //CHECKING RESPONSE HEADERS
-    statusCodeToken = result.statusCode;
-    statusBody = JSON.parse(result.body);
     console.log('Body: \n  '+ result.body+'\n' + 'statusCode: '+ result.statusCode + '\n');
     if (result.body == '{"error":"Invalid Credentials"}' || result.body == '{"error":"You need to log in to perform this request"}') {
       console.log('Something were wrong... Connecting again. ');
-      res.send('Invalid Token, Reconnecting');
+      res.send('Invalid Token');
       return Connection.authNessus();
     }else{
       console.log('Everything is ok');
-      res.send('Token Valid');
+      res.send('Valid Token');
     }
   }).catch(function(err){
     console.log(err);
