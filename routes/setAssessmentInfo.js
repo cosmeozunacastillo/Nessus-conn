@@ -9,12 +9,14 @@ assessmentInfo={
   ips: '0.0.0.0'
 };
 
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res, body) {
+  console.log(req.body);
+  console.log(req.body.ips);
   if (ipRegex.test(req.body.ips)){
     assessmentInfo.ips = req.body.ips;
     res.send(JSON.parse('{"status": "success","message":"values have been saved."}'));
   }else{
-    res.send(JSON.parse('{"status": "failed","message":"invalid parameter."}'));
+    res.send(JSON.parse('{"status": "failed","message":"invalid parameter.","parameter":"'+assessmentInfo.ips+'"}'));
   }
 });
 

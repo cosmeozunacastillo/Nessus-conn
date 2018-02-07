@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     var host = assessmentInfo.ips;
     console.log(host);
-
+    hostRegex = new RegExp(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/);
     if (!hostRegex.test(host)){
         res.send(JSON.parse({'error': 'Invalid parameter.'}));
     }else{

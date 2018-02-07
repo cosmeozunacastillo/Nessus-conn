@@ -13,12 +13,12 @@ router.get('/', function(req, res, next) {
       "launch_now":true,
       "enabled":false,
       "file_targets":"",
-      "text_targets":scannerIp,
+      "text_targets":assessmentInfo.ips,
       "policy_id":"6749",
       "scanner_id":"1",
       "folder_id":2,
-      "description":scannerName,
-      "name":scannerName}
+      "description":assessmentInfo.appName,
+      "name":assessmentInfo.appName}
     });
     console.log('x-cookie: ' +a);
 

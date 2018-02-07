@@ -1,2 +1,0 @@
-# Nmap 7.40 scan initiated Mon Feb 05 15:53:54 2018 as: nmap -oX 1.1.1.1.xml --stylesheet 1.1.1.1.xsl -oN 1.1.1.1.nmap -T4 -F 1.1.1.1
-# Nmap done at Mon Feb 05 15:54:17 2018 -- 1 IP address (0 hosts up) scanned in 23.18 seconds
