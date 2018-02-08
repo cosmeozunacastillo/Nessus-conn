@@ -6,7 +6,7 @@ assessmentInfo={
   requestNum: '',
   appName: '',
   description: '',
-  ips: '0.0.0.0'
+  ips: '3.211.65.171'
 };
 
 router.post('/', function(req, res, body) {
