@@ -22,7 +22,6 @@ var nmapLaunch = require('./routes/nmap/launchScan');
 
 
 var webInspectIndex = require('./routes/webInspect/index');
-var assessmentInfo = require('./routes/setAssessmentInfo');
 var app = express();
 
 // view engine setup
@@ -52,7 +51,6 @@ app.use('/nmap/launchScan',nmapLaunch);
 app.use('/nmap/convertResults', nmapConverter);
 
 app.use('/webInspect/',webInspectIndex);
-app.use('/setAssessmentInfo',assessmentInfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

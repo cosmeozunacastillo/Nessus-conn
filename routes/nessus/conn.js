@@ -34,11 +34,12 @@ let options = {
 Validation = {
   authNessus : function(){
     //THE POST Request is called!!
+    console.log('connecting...')
     test.post('https://3.8.86.49:8834/session',jsonObject,options).then(result => {
-	    console.log('\n Body final: '+result.body)
+      
+	    console.log(result.body)
 	    a = JSON.parse(result.body).token;
-      console.log(JSON.parse(result.body).token);
-	    console.log('\n \n Si se pudo! '+ a);
+      //console.log(JSON.parse(result.body).token);
     }).catch(function(err){
       console.log(err);
     });

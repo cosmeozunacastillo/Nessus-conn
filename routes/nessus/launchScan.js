@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var connection = require('../../Files/conn2');
 isValid = false;
-router.get('/', function(req, res, next) {
+ipRegex = new RegExp(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/);
+router.post('/', function(req, res, next) {
   //POST DATA
   console.log('\n Token' + a.token);
   let jsonObject2 = JSON.stringify({
@@ -13,14 +14,15 @@ router.get('/', function(req, res, next) {
       "launch_now":true,
       "enabled":false,
       "file_targets":"",
-      "text_targets":assessmentInfo.ips,
+      "text_targets":(ipRegex.test(req.body.ips))?req.body.ips:'0.0.0.0',
       "policy_id":"6749",
       "scanner_id":"1",
       "folder_id":2,
-      "description":assessmentInfo.appName,
-      "name":assessmentInfo.appName}
+      "description":(req.body.description!=null || typeof(req.body.description)!='undefined')?req.body.description:'N/A',
+      "name":(req.body.appName!=null || typeof(req.body.appName)!='undefined')?req.body.appName:'unammed'}
     });
     console.log('x-cookie: ' +a);
+    console.log(req.body);
 
   //CREATE SCAN HEADERS
   let postheaders = {
