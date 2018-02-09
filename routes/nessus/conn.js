@@ -34,7 +34,7 @@ let options = {
 Validation = {
   authNessus : function(){
     //THE POST Request is called!!
-    console.log('connecting...')
+    console.log('authenticating nessus...')
     test.post('https://3.8.86.49:8834/session',jsonObject,options).then(result => {
       
 	    console.log(result.body)
