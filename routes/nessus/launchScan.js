@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
       "scanner_id":"1",
       "folder_id":2,
       "description":(req.body.description!=null || typeof(req.body.description)!='undefined')?req.body.description:'N/A',
-      "name":(req.body.appName!=null || typeof(req.body.appName)!='undefined')?req.body.appName:'unammed'}
+      "name":(req.body.assessment!=null || typeof(req.body.assessment)!='undefined')?req.body.assessment:'unammed'}
     });
     console.log('x-cookie: ' +a);
     console.log(req.body);
