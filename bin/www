@@ -72,6 +72,10 @@ function onError(error) {
       console.error(bind + ' is already in use');
       process.exit(1);
       break;
+    /*case 'ECONNREFUSED':
+      console.error(bind + 'not found, refused the connection or there is not internet connection');
+      process.exit(1);
+      break;*/
     default:
       throw error;
   }

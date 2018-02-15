@@ -1,7 +1,7 @@
 var https = require('https');
 var express = require('express');
 var router = express.Router();
-var test = require('../../Files/conn2');
+var request = require('request');
 
 // 'a' is the variable that will store the token
 a = '';
@@ -31,23 +31,26 @@ let options = {
 }
 
 //Creating object with function of authentication, this is Global
-Validation = {
+validation = {
   authNessus : function(){
     //THE POST Request is called!!
-    console.log('authenticating nessus...')
-    test.post('https://3.8.86.49:8834/session',jsonObject,options).then(result => {
-      
-	    console.log(result.body)
-	    a = JSON.parse(result.body).token;
-      //console.log(JSON.parse(result.body).token);
-    }).catch(function(err){
-      console.log(err);
-    });
+    console.log('authenticating nessus...');
+    request.post({
+      headers: postheaders,
+      url: 'https://3.8.86.49:8834/session',
+      body: jsonObject,
+      method: 'POST',
+      rejectUnauthorized: false
+      },function(error,response,body){
+        console.log("authenticated: "+body);
+        a = JSON.parse(body).token;
+      }
+    );
   }
 };
 
 //We call the Authentication method every time we start the application
 
-Validation.authNessus();
+validation.authNessus();
 
 module.exports = router;

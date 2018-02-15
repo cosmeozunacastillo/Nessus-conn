@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../../Files/conn2');
+var request = require("request");
 isValid = false;
 ipRegex = new RegExp(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/);
+multipleIpsOrDomainsRegex = new RegExp(/^([A-Za-z0-9_\.-]+)(,([A-Za-z0-9_\.-]+))*$/);
 router.post('/', function(req, res, next) {
   //POST DATA
   console.log('\n Token' + a.token);
@@ -14,7 +15,7 @@ router.post('/', function(req, res, next) {
       "launch_now":true,
       "enabled":false,
       "file_targets":"",
-      "text_targets":(ipRegex.test(req.body.ips))?req.body.ips:'0.0.0.0',
+      "text_targets":(multipleIpsOrDomainsRegex.test(req.body.ips))?req.body.ips:'0.0.0.0',
       "policy_id":"6749",
       "scanner_id":"1",
       "folder_id":2,
@@ -31,23 +32,18 @@ router.post('/', function(req, res, next) {
   		'rejectUnauthorized': false,
       'X-Cookie':  'token='+a
   };
-
-  //CREATE OPTIONS TO CONNECT IN ORDER TO RUN A SCAN
-  let options = {
-  	hostname: '3.8.86.49',
-  	port: '8834',
-  	path: '/scans',
-  	method: 'POST',
-  	rejectUnauthorized: false,
-  	headers: postheaders,
-  	tryToDecode: true // Tries to decode gzip
-  }
-
-    connection.post('https://3.8.86.49:8834/scans',jsonObject2,options).then(result => {
-        res.send(JSON.parse(result.body));
-    }).catch(function(err){
-        console.log(err);
-    });
+    request.post({
+      headers: postheaders,
+      //url:'https://3.8.86.49:8834/scans?folder_id=13628',
+      url: 'https://3.8.86.49:8834/scans',
+      body: jsonObject2,
+      method: 'POST',
+      rejectUnauthorized: false
+     },function(error,response,body){
+        //console.log(body);
+        res.send(JSON.parse(body));
+     }
+    );
 
 });
 module.exports = router;

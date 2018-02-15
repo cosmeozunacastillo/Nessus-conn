@@ -6,8 +6,8 @@ var lauchScanAtConsole = function(host){
     
     var nmapCmd;
     console.log(host);
-    hostRegex = new RegExp(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/);
-    if (!hostRegex.test(host)){
+    multipleIpsOrDomainsRegex = new RegExp(/^([A-Za-z0-9_\.-]+)(,([A-Za-z0-9_\.-]+))*$/);
+    if (!multipleIpsOrDomainsRegex.test(host)){
         res.send(JSON.parse('{"error": "Invalid parameter."}'));
     }else{
         //nmapScanRecorder.push({"id":nmapScanRecorder.length,"status":"running"});

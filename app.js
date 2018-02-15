@@ -11,12 +11,13 @@ var index = require('./routes/index');
 var nessusIndex = require('./routes/nessus/index');
 var nessusConn = require('./routes/nessus/conn');
 var nessusLaunch = require('./routes/nessus/launchScan');
-var nessusStatus = require('./routes/nessus/getScanStatus');
 var nessusVulnerabilities = require('./routes/nessus/getScanVulnerabilities');
 //var nessusGetJson = require('./routes/nessus/getAssessmentInfo');
 var nessusValidateToken = require('./routes/nessus/validateToken');
-var nmapConverter = require('./routes/nmap/convertResults');
+//var nessusCopy = require('./routes/nessus/launchScanBackup');
 
+
+var nmapConverter = require('./routes/nmap/convertResults');
 var nmapIndex = require('./routes/nmap/index');
 var nmapLaunch = require('./routes/nmap/launchScan');
 
@@ -41,10 +42,10 @@ app.use('/', index);
 app.use('/nessus/', nessusIndex);
 app.use('/nessus/conn', nessusLaunch);
 app.use('/nessus/launchScan',nessusLaunch);
-app.use('/nessus/getScanStatus',nessusStatus);
 app.use('/nessus/getScanVulnerabilities',nessusVulnerabilities);
 //app.use('nessus/getAssessmentInfo',nessusGetJson);
 app.use('/nessus/validateToken',nessusValidateToken);
+//app.use('/nessus/launchScanBackup',nessusCopy);
 
 app.use('/nmap/',nmapIndex);
 app.use('/nmap/launchScan',nmapLaunch);
