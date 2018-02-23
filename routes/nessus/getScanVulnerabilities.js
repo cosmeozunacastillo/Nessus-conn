@@ -114,8 +114,10 @@ router.get('/', function(req, res, next) {
                 var s = JSON.stringify(result,undefined,3);
                 var t = JSON.parse(s);
                 //console.log('Result: \n' + s + '\n');
+                //res.send(s);
                 let untranslatedVulnerabilities = {
                     'assessment':(t)?t.NessusClientData_v2.Report[0].$.name:-1,
+                    'scanId':asssessmentId,
                     'policy':(t)?t.NessusClientData_v2.Policy:-1,
                     'hosts':[]
                 };
@@ -131,7 +133,7 @@ router.get('/', function(req, res, next) {
             //console.log("making second request");
             //next();
             //res.send(body);
-        });
+    });
 })
 
 module.exports = router;
