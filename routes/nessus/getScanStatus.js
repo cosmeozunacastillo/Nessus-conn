@@ -24,12 +24,12 @@ router.get('/', function(req, res, next) {
             if(typeof(assessment)=='undefined' || assessment==''){
                 res.send(aa);
             }else{
-                console.log(aa);
+                //console.log(aa);
                 for (var i = 0; i < aa.length; i++) {
                     if (aa[i].name == assessment){
                         res.send(aa[i]);
                         wasScanFound = true;
-                        console.log(typeof(aa[i]));
+                        //console.log(typeof(aa[i]));
                         break;
                     }
                 }

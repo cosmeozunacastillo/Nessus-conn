@@ -112,6 +112,7 @@ router.get('/', function(req, res, next) {
 
             p.parseString(body, function (err, result) {
                 var s = JSON.stringify(result,undefined,3);
+                //console.log(s);
                 var t = JSON.parse(s);
                 //console.log('Result: \n' + s + '\n');
                 //res.send(s);

@@ -1,6 +1,7 @@
 var express = require('express');
 var cp = require('child_process');
 var router = express.Router();
+var converter = require('xml2js');
 
 var lauchScanAtConsole = function(host){
     
@@ -11,22 +12,22 @@ var lauchScanAtConsole = function(host){
         res.send(JSON.parse('{"error": "Invalid parameter."}'));
     }else{
         //nmapScanRecorder.push({"id":nmapScanRecorder.length,"status":"running"});
-        nmapCmdInternal = "nmap -p 1-65535 -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 -oX \"Nmap - "+host+".xml\" --stylesheet nmap-stylesheet.xsl " +host;
-        console.log(nmapCmdInternal);
-        //nmapCmdExternal = nmap -p 1-65535 -T4 -A -v -Pn -oX "Nmap - %%a.xml" --stylesheet nmap-stylesheet.xsl %%a;
-        nmapCmd = "nmap -oX "+ host + ".xml --stylesheet "+host+".xsl -oN "+host+".nmap -T4 -F "+ host;
+        //nmapCmdInternal = "nmap -p- -T4 -A -v -nP -PE -PS22,25,80 -PA21,23,80,3389 -oX \"Nmap - "+host+".xml\" --stylesheet nmap-stylesheet.xsl " +host;
+        nmapCmdAutomation = "nmap -T4 -A -p 1-65535 -v -Pn -oX - "+host;
+        console.log(nmapCmdAutomation);
         console.log("launching nmap scan at console...");
-        //result;
-        var process = cp.exec(nmapCmdInternal, (error, stdout, stderr) => {
-        //result = stdout;
+        var process = cp.exec(nmapCmdAutomation, (error, stdout, stderr) => {
         if(error){
-            //callback(JSON.parse('{"error": "Could not run the scanner."}'));
             console.log("Could not run the scanner.");
-            //res.send(JSON.parse('{"error": "Could not run the scanner."}'));
         }else{
-            //callback(result);
+            var p = new converter.Parser();
             console.log(stdout);
             console.log(typeof(stdout));
+            p.parseString(stdout, function (err, result) {
+                console.log(result);
+                console.log(typeof(result));
+                var s = JSON.stringify(result,undefined,3);
+            });
         }
 
         });

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="nmap-stylesheet.xsl" type="text/xsl"?>
+<!-- Nmap 7.40 scan initiated Thu Mar 01 13:04:20 2018 as: nmap -p 1-65535 -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 -oX &quot;Nmap - 3.211.67.36.xml&quot; -&#45;stylesheet nmap-stylesheet.xsl 3.211.67.36 -->
+<nmaprun scanner="nmap" args="nmap -p 1-65535 -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 -oX &quot;Nmap - 3.211.67.36.xml&quot; -&#45;stylesheet nmap-stylesheet.xsl 3.211.67.36" start="1519931060" startstr="Thu Mar 01 13:04:20 2018" version="7.40" xmloutputversion="1.04">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="1"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1519931062"/>
+<taskend task="NSE" time="1519931062"/>
+<taskbegin task="NSE" time="1519931062"/>
+<taskend task="NSE" time="1519931062"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1519931084"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1519931090"/>
+<taskbegin task="SYN Stealth Scan" time="1519931090"/>
+<taskend task="SYN Stealth Scan" time="1519931123" extrainfo="65535 total ports"/>
+<taskbegin task="Service scan" time="1519931123"/>
+<taskend task="Service scan" time="1519931182" extrainfo="16 services on 1 host"/>
+<taskbegin task="NSE" time="1519931183"/>
+<taskend task="NSE" time="1519931247"/>
+<taskbegin task="NSE" time="1519931247"/>
+<taskend task="NSE" time="1519931248"/>
+<host starttime="1519931090" endtime="1519931248"><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="3.211.67.36" addrtype="ipv4"/>
+<hostnames>
+<hostname name="lstkag71768.softtekge.com" type="PTR"/>
+</hostnames>
+<ports><extraports state="closed" count="65519">
+<extrareasons reason="resets" count="65519"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="netbios-ssn" product="Microsoft Windows netbios-ssn" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="microsoft-ds" product="Microsoft Windows 7 - 10 microsoft-ds" extrainfo="workgroup: SOFTTEKGE" hostname="LSTKAG71768" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="902"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="vmware-auth" product="VMware Authentication Daemon" version="1.10" extrainfo="Uses VNC, SOAP" tunnel="ssl" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="912"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="vmware-auth" product="VMware Authentication Daemon" version="1.0" extrainfo="Uses VNC, SOAP" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="1025"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="1026"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="1027"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="1028"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="2317"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="2869"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="http" product="Microsoft HTTPAPI httpd" version="2.0" extrainfo="SSDP/UPnP" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="3000"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="http" product="Node.js" extrainfo="Express middleware" method="probed" conf="10"><cpe>cpe:/a:nodejs:node.js</cpe></service><script id="http-methods" output="&#xa;  Supported Methods: GET HEAD POST OPTIONS"><table key="Supported Methods">
+<elem>GET</elem>
+<elem>HEAD</elem>
+<elem>POST</elem>
+<elem>OPTIONS</elem>
+</table>
+</script><script id="http-title" output="Scan Automation API"><elem key="title">Scan Automation API</elem>
+</script></port>
+<port protocol="tcp" portid="5432"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="postgresql" product="PostgreSQL DB" method="probed" conf="10"><cpe>cpe:/a:postgresql:postgresql</cpe></service></port>
+<port protocol="tcp" portid="6129"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="damewaremr" product="DameWare Mini Remote Control" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="8732"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="http" product="Microsoft HTTPAPI httpd" version="2.0" extrainfo="SSDP/UPnP" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service><script id="http-server-header" output="Microsoft-HTTPAPI/2.0"><elem>Microsoft-HTTPAPI/2.0</elem>
+</script><script id="http-title" output="Not Found"><elem key="title">Not Found</elem>
+</script></port>
+<port protocol="tcp" portid="9000"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="cslistener" method="table" conf="3"/></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="135"/>
+<portused state="closed" proto="tcp" portid="1"/>
+<portused state="closed" proto="udp" portid="31623"/>
+<osmatch name="Microsoft Windows 8.1 R1" accuracy="100" line="73081">
+<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="8.1" accuracy="100"><cpe>cpe:/o:microsoft:windows_8.1:r1</cpe></osclass>
+</osmatch>
+</os>
+<uptime seconds="280757" lastboot="Mon Feb 26 07:08:11 2018"/>
+<distance value="0"/>
+<tcpsequence index="253" difficulty="Good luck!" values="F6F4C1ED,D8E72637,94B27812,E7A25488,227B5E46,DDD91C7B"/>
+<ipidsequence class="Incremental" values="65E1,65E3,65E5,65E7,65E9,65EB"/>
+<tcptssequence class="100HZ" values="1AC4D47,1AC4D51,1AC4D5B,1AC4D65,1AC4D6F,1AC4D79"/>
+<hostscript><script id="nbstat" output="NetBIOS name: LSTKAG71768, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 58:20:b1:76:b4:ca (Hewlett Packard)&#xa;Names:&#xa;  LSTKAG71768&lt;00&gt;      Flags: &lt;unique&gt;&lt;active&gt;&#xa;  SOFTTEKGE&lt;00&gt;        Flags: &lt;group&gt;&lt;active&gt;&#xa;  LSTKAG71768&lt;20&gt;      Flags: &lt;unique&gt;&lt;active&gt;&#xa;  SOFTTEKGE&lt;1e&gt;        Flags: &lt;group&gt;&lt;active&gt;"><table key="names">
+<table>
+<elem key="name">LSTKAG71768</elem>
+<elem key="flags">1024</elem>
+<elem key="suffix">0</elem>
+</table>
+<table>
+<elem key="name">SOFTTEKGE</elem>
+<elem key="flags">33792</elem>
+<elem key="suffix">0</elem>
+</table>
+<table>
+<elem key="name">LSTKAG71768</elem>
+<elem key="flags">1024</elem>
+<elem key="suffix">32</elem>
+</table>
+<table>
+<elem key="name">SOFTTEKGE</elem>
+<elem key="flags">33792</elem>
+<elem key="suffix">30</elem>
+</table>
+</table>
+<table key="statistics">
+<elem>58 20 b1 76 b4 ca 00 00 00 00 00 00 00 00 00 00 00</elem>
+<elem>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</elem>
+<elem>00 00 00 00 00 00 00 00 00 00 00 00 00 00</elem>
+</table>
+<elem key="user">&lt;unknown&gt;</elem>
+<elem key="server_name">LSTKAG71768</elem>
+<table key="mac">
+<elem key="manuf">Hewlett Packard</elem>
+<elem key="address">58:20:b1:76:b4:ca</elem>
+</table>
+</script><script id="smbv2-enabled" output="Server supports SMBv2 protocol">true</script></hostscript><times srtt="504" rttvar="721" to="100000"/>
+</host>
+<taskbegin task="NSE" time="1519931248"/>
+<taskend task="NSE" time="1519931248"/>
+<taskbegin task="NSE" time="1519931248"/>
+<taskend task="NSE" time="1519931248"/>
+<runstats><finished time="1519931248" timestr="Thu Mar 01 13:07:28 2018" elapsed="189.60" summary="Nmap done at Thu Mar 01 13:07:28 2018; 1 IP address (1 host up) scanned in 189.60 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
