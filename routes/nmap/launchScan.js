@@ -3,7 +3,7 @@ var cp = require('child_process');
 var router = express.Router();
 var converter = require('xml2js');
 
-var lauchScanAtConsole = function(host){
+var lauchScanAtConsole = function(host,callback){
     
     var nmapCmd;
     console.log(host);
@@ -21,12 +21,13 @@ var lauchScanAtConsole = function(host){
             console.log("Could not run the scanner.");
         }else{
             var p = new converter.Parser();
-            console.log(stdout);
-            console.log(typeof(stdout));
+            //console.log(stdout);
+            //console.log(typeof(stdout));
             p.parseString(stdout, function (err, result) {
                 console.log(result);
                 console.log(typeof(result));
                 var s = JSON.stringify(result,undefined,3);
+                callback(s);
             });
         }
 
@@ -37,8 +38,10 @@ var lauchScanAtConsole = function(host){
 
 router.post('/', function(req, res, next) {
     var host = req.body.ips;
-    lauchScanAtConsole(host);
-    res.send(JSON.parse('{"status": "running"}'));
+    req.setTimeout(0)
+    lauchScanAtConsole(host,function(body){res.send(body);});
+    //res.send(JSON.parse('{"status": "running"}'));
+
     //next();
 });
 
